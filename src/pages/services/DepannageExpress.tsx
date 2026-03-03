@@ -14,34 +14,13 @@ import QuoteFormSection from "@/components/QuoteFormSection";
 import RepairShowcaseSection from "@/components/RepairShowcaseSection";
 import ServiceRegionsSection from "@/components/ServiceRegionsSection";
 import FAQSection from "@/components/FAQSection";
-
 import emergencyTechnicianImg from "@/assets/emergency-technician-section.jpg";
+import { fadeUp, staggerItem, hoverLift, heroEntry } from "@/lib/animations";
 
 const situations = [
-  { 
-    title: "Urgence Nocturne & Sécurité", 
-    desc: "Volet bloqué en position ouverte la nuit ou suite à une panne moteur ? Nous intervenons pour sécuriser votre domicile immédiatement.", 
-    urgency: "CRITIQUE", 
-    color: "border-service-rose/30",
-    image: "/images/depannage/nuit.jpg",
-    data: ["Intervention : < 1h", "Dispo : 24h/24", "Sécurisation : Immédiate"]
-  },
-  { 
-    title: "Tentative d'Effraction", 
-    desc: "Votre volet a été forcé ou endommagé ? Nous réparons les lames, les coulisses et renforçons la sécurité de votre installation.", 
-    urgency: "HAUTE", 
-    color: "border-service-orange/30",
-    image: "/images/depannage/effraction.jpg",
-    data: ["Réparation : Lames/Axe", "Renfort : Anti-relevage", "Assurance : Devis agréé"]
-  },
-  { 
-    title: "Dégâts Intempéries", 
-    desc: "Grêle, tempête ou vent violent ? Si votre volet est sorti de ses rails ou si le tablier est abîmé, nous intervenons rapidement.", 
-    urgency: "MOYENNE", 
-    color: "border-service-blue/30",
-    image: "/images/depannage/intemperies.jpg",
-    data: ["Diagnostic : Structurel", "Pièces : Tablier/Lames", "Garantie : 2 ans"]
-  },
+  { title: "Urgence Nocturne & Sécurité", desc: "Volet bloqué en position ouverte la nuit ou suite à une panne moteur ? Nous intervenons pour sécuriser votre domicile immédiatement.", urgency: "CRITIQUE", color: "border-service-rose/30", image: "/images/depannage/nuit.jpg", data: ["Intervention : < 1h", "Dispo : 24h/24", "Sécurisation : Immédiate"] },
+  { title: "Tentative d'Effraction", desc: "Votre volet a été forcé ou endommagé ? Nous réparons les lames, les coulisses et renforçons la sécurité de votre installation.", urgency: "HAUTE", color: "border-service-orange/30", image: "/images/depannage/effraction.jpg", data: ["Réparation : Lames/Axe", "Renfort : Anti-relevage", "Assurance : Devis agréé"] },
+  { title: "Dégâts Intempéries", desc: "Grêle, tempête ou vent violent ? Si votre volet est sorti de ses rails ou si le tablier est abîmé, nous intervenons rapidement.", urgency: "MOYENNE", color: "border-service-blue/30", image: "/images/depannage/intemperies.jpg", data: ["Diagnostic : Structurel", "Pièces : Tablier/Lames", "Garantie : 2 ans"] },
 ];
 
 const engagements = [
@@ -66,7 +45,6 @@ const DepannageExpressPage = () => {
   return (
     <main className="relative">
       <Navbar />
-      
       <section ref={heroRef} className="relative pt-24 pb-16 min-h-[60vh] flex items-center overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: bgY }}>
           <img src={imgDepannage} alt="Dépannage express volets roulants" className="w-full h-[120%] object-cover" />
@@ -78,7 +56,7 @@ const DepannageExpressPage = () => {
             <ChevronRight className="h-4 w-4" />
             <span>Dépannage Express</span>
           </div>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
+          <motion.div {...heroEntry(0)} className="max-w-3xl">
             <Badge variant="serviceBlue" className="gap-2 px-3 py-1.5 rounded-full text-white text-sm font-semibold mb-6 backdrop-blur-sm">
               <Zap className="h-3.5 w-3.5" /> Intervention rapide
             </Badge>
@@ -105,18 +83,16 @@ const DepannageExpressPage = () => {
         </div>
       </section>
 
-      {/* Engagements */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-2xl mx-auto mb-12">
+          <motion.div {...fadeUp} className="text-center max-w-2xl mx-auto mb-12">
             <Badge variant="accent" className="gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-4">Nos Engagements</Badge>
             <h2 className="font-display text-3xl font-bold text-foreground mb-4">Nos Engagements Dépannage Express</h2>
             <p className="text-muted-foreground">Un service d'urgence fiable, transparent et efficace — c'est la promesse Répar'Action Volets.</p>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {engagements.map((e, i) => (
-              <motion.div key={e.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                whileHover={{ y: -4 }}
+              <motion.div key={e.title} {...staggerItem(i)} {...hoverLift}
                 className={`bg-card rounded-xl p-6 border ${e.border} card-shadow hover:card-shadow-hover text-center transition-all`}>
                 <div className={`w-14 h-14 rounded-2xl ${e.color} flex items-center justify-center mx-auto mb-4 shadow-lg border border-white/20`}>
                   <e.icon className="h-7 w-7 text-white" />
@@ -129,17 +105,16 @@ const DepannageExpressPage = () => {
         </div>
       </section>
 
-      {/* Situations */}
       <section className="py-16 bg-section-gradient">
         <div className="container mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-2xl mx-auto mb-12">
+          <motion.div {...fadeUp} className="text-center max-w-2xl mx-auto mb-12">
             <Badge variant="serviceRose" className="gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-4">Urgences</Badge>
             <h2 className="font-display text-3xl font-bold text-foreground mb-4">Les Situations que Nous Traitons en Urgence</h2>
             <p className="text-muted-foreground">Quelle que soit la panne, nous avons la solution pour la résoudre rapidement.</p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {situations.map((s, i) => (
-              <motion.div key={s.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+              <motion.div key={s.title} {...staggerItem(i)} {...hoverLift}
                 className={`group bg-card rounded-2xl border ${s.color} overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-500 flex flex-col`}
               >
                 <div className="relative h-56 overflow-hidden">
@@ -170,16 +145,9 @@ const DepannageExpressPage = () => {
 
       <ProcessSection />
       <QuoteFormSection />
-      <RepairShowcaseSection
-        image={emergencyTechnicianImg}
-        title="Réactivité & Professionnalisme en Urgence"
-        description="Une panne de volet roulant ne peut pas attendre. Nos techniciens d'urgence sont formés pour intervenir rapidement, même en conditions difficiles ou la nuit. Avec une torche frontale, des outils spécialisés et des pièces de rechange, nous diagnostiquons et réparons votre problème sur place. Notre engagement : vous redonner sécurité et confort dans les plus brefs délais."
-        highlights={[
-          "Intervention dans l'heure pour les urgences de sécurité",
-          "Disponibilité 24h/24, 7 jours sur 7, y compris jours fériés",
-          "Pièces de rechange immédiatement disponibles",
-          "Diagnostic gratuit et transparence totale sur les tarifs"
-        ]}
+      <RepairShowcaseSection image={emergencyTechnicianImg} title="Réactivité & Professionnalisme en Urgence"
+        description="Une panne de volet roulant ne peut pas attendre. Nos techniciens d'urgence sont formés pour intervenir rapidement, même en conditions difficiles ou la nuit."
+        highlights={["Intervention dans l'heure pour les urgences de sécurité", "Disponibilité 24h/24, 7 jours sur 7", "Pièces de rechange immédiatement disponibles", "Diagnostic gratuit et transparence totale"]}
       />
       <FAQSection />
       <TestimonialsSection />

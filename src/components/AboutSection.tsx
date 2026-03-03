@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, Award, Users, Clock, ShieldCheck, Hammer, HeartHandshake } from "lucide-react";
+import { fadeUp, fadeLeft, fadeRight, staggerItem } from "@/lib/animations";
 import CounterAnimation from "./CounterAnimation";
 
 const points = [
@@ -21,13 +22,7 @@ const certifications = [
 const AboutSection = () => (
   <section id="apropos" className="py-20 relative overflow-hidden">
     <div className="container mx-auto px-4 relative">
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }} 
-        whileInView={{ opacity: 1, y: 0 }} 
-        viewport={{ once: true }} 
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="text-center max-w-3xl mx-auto mb-16"
-      >
+      <motion.div {...fadeUp} className="text-center max-w-3xl mx-auto mb-16">
         <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-service-emerald/10 text-service-emerald text-sm font-semibold border border-service-emerald/20 mb-4">Notre Engagement</span>
         <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mt-2 mb-6">
           Répar'Action Volets : Votre Artisan Expert en Volets Roulants à Paris depuis 10 ans
@@ -38,25 +33,13 @@ const AboutSection = () => (
       </motion.div>
 
       <div className="grid lg:grid-cols-2 gap-16 items-center">
-        <motion.div 
-          initial={{ opacity: 0, x: -30 }} 
-          whileInView={{ opacity: 1, x: 0 }} 
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
+        <motion.div {...fadeLeft}>
           <p className="text-muted-foreground mb-10 leading-relaxed">
             Implantés à Paris et en Île-de-France, nos techniciens certifiés interviennent sur toutes les marques de volets roulants : Somfy, Bubendorff, Profalux, Simu, Nice, Becker et bien d'autres. Chaque intervention est réalisée avec des pièces d'origine, dans le respect des normes de sécurité en vigueur. Notre certification RGE vous permet de bénéficier des aides de l'État (MaPrimeRénov', éco-PTZ) pour vos travaux d'isolation.
           </p>
           <div className="grid sm:grid-cols-2 gap-6 mb-10">
             {points.map((p, i) => (
-              <motion.div
-                key={p.text}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="flex items-start gap-4 p-2 rounded-xl transition-colors group"
-              >
+              <motion.div key={p.text} {...staggerItem(i)} className="flex items-start gap-4 p-2 rounded-xl transition-colors group">
                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${p.color.split(" ")[0]} shadow-sm border border-white/10`}>
                   <p.icon className={`h-5 w-5 ${p.color.split(" ")[1]}`} />
                 </div>
@@ -64,7 +47,6 @@ const AboutSection = () => (
               </motion.div>
             ))}
           </div>
-
           <div className="flex flex-wrap gap-3">
             {certifications.map((c) => (
               <span key={c.label} className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold border ${c.color}`}>
@@ -74,17 +56,10 @@ const AboutSection = () => (
           </div>
         </motion.div>
 
-        <motion.div 
-          initial={{ opacity: 0, x: 30 }} 
-          whileInView={{ opacity: 1, x: 0 }} 
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="space-y-8"
-        >
+        <motion.div {...fadeRight} className="space-y-8">
           <div className="bg-accent rounded-3xl p-10 text-white relative overflow-hidden shadow-2xl">
             <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-white/10 blur-2xl" />
             <div className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full bg-white/10 blur-2xl" />
-            
             <h3 className="font-display text-2xl font-bold mb-8 relative">Répar'Action Volets en Chiffres</h3>
             <div className="grid grid-cols-2 gap-10 relative">
               {[
@@ -92,14 +67,8 @@ const AboutSection = () => (
                 { num: 98, suffix: "%", label: "Clients satisfaits" },
                 { num: 48, suffix: "h", label: "Délai max garanti" },
                 { num: 3, suffix: " ans", label: "De garantie" },
-              ].map((s) => (
-                <motion.div
-                  key={s.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5 }}
-                >
+              ].map((s, i) => (
+                <motion.div key={s.label} {...staggerItem(i)}>
                   <CounterAnimation end={s.num} suffix={s.suffix} />
                   <div className="text-sm text-white/80 font-medium mt-2 uppercase tracking-wider">{s.label}</div>
                 </motion.div>
@@ -116,7 +85,7 @@ const AboutSection = () => (
             ].map((item) => (
               <motion.div
                 key={item.label}
-                whileHover={{ y: -5 }}
+                whileHover={{ y: -4, transition: { duration: 0.3 } }}
                 className={`bg-card rounded-2xl p-6 border ${item.color} card-shadow text-center transition-all duration-300 hover:card-shadow-hover`}
               >
                 <div className="font-bold text-foreground text-sm mb-1">{item.label}</div>

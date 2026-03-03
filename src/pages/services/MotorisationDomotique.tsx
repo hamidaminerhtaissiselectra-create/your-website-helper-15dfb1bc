@@ -14,43 +14,16 @@ import QuoteFormSection from "@/components/QuoteFormSection";
 import RepairShowcaseSection from "@/components/RepairShowcaseSection";
 import ServiceRegionsSection from "@/components/ServiceRegionsSection";
 import FAQSection from "@/components/FAQSection";
-
 import motorizationWiredImg from "@/assets/motorization-wired.jpg";
 import motorizationRadioImg from "@/assets/motorization-radio.jpg";
 import motorizationSmartImg from "@/assets/motorization-smart.jpg";
 import motorizationTechnicianImg from "@/assets/motorization-technician-section.jpg";
+import { fadeUp, staggerItem, hoverLift, heroEntry } from "@/lib/animations";
 
 const solutions = [
-  { 
-    title: "Motorisation filaire", 
-    desc: "La solution la plus fiable et économique. Le moteur est commandé par un interrupteur mural fixe.", 
-    points: ["Prix accessible", "Très fiable", "Aucune pile à changer", "Installation simple"], 
-    prix: "à partir de 200€/volet", 
-    color: "border-service-blue/20", 
-    badgeColor: "bg-service-blue/10 text-service-blue border-service-blue/20",
-    image: motorizationWiredImg,
-    data: ["Type : Filaire 230V", "Couple : 6 à 50 Nm", "Garantie : 5 ans"]
-  },
-  { 
-    title: "Motorisation radio (sans fil)", 
-    desc: "Le moteur est commandé par une télécommande sans fil. Plus de flexibilité, centralisation possible.", 
-    points: ["Télécommande sans fil", "Pas de câblage mural", "Centralisation possible", "Programmation horaire"], 
-    prix: "à partir de 300€/volet", 
-    color: "border-service-rose/20", 
-    badgeColor: "bg-service-rose/10 text-service-rose border-service-rose/20",
-    image: motorizationRadioImg,
-    data: ["Protocole : RTS / io", "Portée : 20m (murs)", "Multi-canaux"]
-  },
-  { 
-    title: "Motorisation connectée", 
-    desc: "Contrôlez vos volets depuis votre smartphone. Compatible Somfy TaHoma, Google Home, Alexa, Apple HomeKit.", 
-    points: ["Contrôle smartphone", "Compatible assistants vocaux", "Scénarios automatisés", "Gestion à distance"], 
-    prix: "à partir de 450€/volet", 
-    color: "border-service-violet/20", 
-    badgeColor: "bg-service-violet/10 text-service-violet border-service-violet/20",
-    image: motorizationSmartImg,
-    data: ["App : TaHoma / Home", "Feedback : Temps réel", "Cloud sécurisé"]
-  },
+  { title: "Motorisation filaire", desc: "La solution la plus fiable et économique. Le moteur est commandé par un interrupteur mural fixe.", points: ["Prix accessible", "Très fiable", "Aucune pile à changer", "Installation simple"], prix: "à partir de 200€/volet", color: "border-service-blue/20", badgeColor: "bg-service-blue/10 text-service-blue border-service-blue/20", image: motorizationWiredImg, data: ["Type : Filaire 230V", "Couple : 6 à 50 Nm", "Garantie : 5 ans"] },
+  { title: "Motorisation radio (sans fil)", desc: "Le moteur est commandé par une télécommande sans fil. Plus de flexibilité, centralisation possible.", points: ["Télécommande sans fil", "Pas de câblage mural", "Centralisation possible", "Programmation horaire"], prix: "à partir de 300€/volet", color: "border-service-rose/20", badgeColor: "bg-service-rose/10 text-service-rose border-service-rose/20", image: motorizationRadioImg, data: ["Protocole : RTS / io", "Portée : 20m (murs)", "Multi-canaux"] },
+  { title: "Motorisation connectée", desc: "Contrôlez vos volets depuis votre smartphone. Compatible Somfy TaHoma, Google Home, Alexa, Apple HomeKit.", points: ["Contrôle smartphone", "Compatible assistants vocaux", "Scénarios automatisés", "Gestion à distance"], prix: "à partir de 450€/volet", color: "border-service-violet/20", badgeColor: "bg-service-violet/10 text-service-violet border-service-violet/20", image: motorizationSmartImg, data: ["App : TaHoma / Home", "Feedback : Temps réel", "Cloud sécurisé"] },
 ];
 
 const MotorisationDomotiquePage = () => {
@@ -68,7 +41,6 @@ const MotorisationDomotiquePage = () => {
   return (
     <main className="relative">
       <Navbar />
-      
       <section ref={heroRef} className="relative pt-24 pb-16 min-h-[60vh] flex items-center overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: bgY }}>
           <img src={imgMotorisation} alt="Motorisation de volets roulants" className="w-full h-[120%] object-cover" />
@@ -80,7 +52,7 @@ const MotorisationDomotiquePage = () => {
             <ChevronRight className="h-4 w-4" />
             <span>Motorisation & Domotique</span>
           </div>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
+          <motion.div {...heroEntry(0)} className="max-w-3xl">
             <Badge variant="serviceBlue" className="gap-2 px-3 py-1.5 rounded-full text-white text-sm font-semibold mb-6 backdrop-blur-sm">
               <Cpu className="h-3.5 w-3.5" /> Maison connectée
             </Badge>
@@ -88,7 +60,7 @@ const MotorisationDomotiquePage = () => {
               Motorisation & Domotique de Volets Roulants — Paris & Île-de-France
             </h1>
             <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
-              Transformez vos volets manuels en volets motorisés et connectés. Contrôle à distance, programmation horaire, scénarios automatisés — découvrez le confort de la maison intelligente avec nos solutions compatibles Somfy, Google Home et Alexa.
+              Transformez vos volets manuels en volets motorisés et connectés. Contrôle à distance, programmation horaire, scénarios automatisés — découvrez le confort de la maison intelligente.
             </p>
             <div className="flex flex-wrap gap-4 mb-8">
               <Button size="lg" variant="accent" asChild className="gap-2 shadow-lg shadow-accent/25 rounded-full">
@@ -107,16 +79,15 @@ const MotorisationDomotiquePage = () => {
         </div>
       </section>
 
-      {/* Pourquoi motoriser */}
       <section className="py-16">
         <div className="container mx-auto px-4 max-w-5xl">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-2xl mx-auto mb-12">
+          <motion.div {...fadeUp} className="text-center max-w-2xl mx-auto mb-12">
             <Badge variant="serviceViolet" className="gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-4">
               <Cpu className="h-3.5 w-3.5" /> Confort & Innovation
             </Badge>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">Pourquoi Motoriser Vos Volets Roulants ?</h2>
             <p className="text-muted-foreground leading-relaxed">
-              Plus de confort, plus de sécurité, plus d'économies d'énergie. La motorisation transforme votre quotidien avec un simple appui sur un bouton ou une commande vocale.
+              Plus de confort, plus de sécurité, plus d'économies d'énergie. La motorisation transforme votre quotidien.
             </p>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -125,8 +96,10 @@ const MotorisationDomotiquePage = () => {
               { icon: Clock, label: "Programmation horaire", color: "bg-service-blue/10 text-service-blue", border: "border-service-blue/20" },
               { icon: Shield, label: "Simulation présence", color: "bg-service-emerald/10 text-service-emerald", border: "border-service-emerald/20" },
               { icon: Zap, label: "Économies d'énergie", color: "bg-service-orange/10 text-service-orange", border: "border-service-orange/20" },
-            ].map((item) => (
-              <motion.div key={item.label} whileHover={{ scale: 1.03 }} className={`bg-card rounded-xl p-4 border ${item.border} card-shadow text-center transition-all`}>
+            ].map((item, i) => (
+              <motion.div key={item.label} {...staggerItem(i)}
+                whileHover={{ y: -3, transition: { duration: 0.3 } }}
+                className={`bg-card rounded-xl p-4 border ${item.border} card-shadow text-center transition-all`}>
                 <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-3 ${item.color} shadow-lg border border-white/10`}>
                   <item.icon className="h-5 w-5" />
                 </div>
@@ -137,17 +110,16 @@ const MotorisationDomotiquePage = () => {
         </div>
       </section>
 
-      {/* Solutions */}
       <section className="py-16 bg-section-gradient">
         <div className="container mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-2xl mx-auto mb-12">
+          <motion.div {...fadeUp} className="text-center max-w-2xl mx-auto mb-12">
             <Badge variant="serviceCyan" className="gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-4">Solutions</Badge>
             <h2 className="font-display text-3xl font-bold text-foreground mb-4">Nos Solutions de Motorisation</h2>
-            <p className="text-muted-foreground">Chaque solution est adaptée à votre configuration et à vos besoins. Installation en 1 à 2 heures par volet.</p>
+            <p className="text-muted-foreground">Chaque solution est adaptée à votre configuration et à vos besoins.</p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {solutions.map((s, i) => (
-              <motion.div key={s.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+              <motion.div key={s.title} {...staggerItem(i)} {...hoverLift}
                 className={`group bg-card rounded-2xl border ${s.color} overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-500 flex flex-col`}
               >
                 <div className="relative h-56 overflow-hidden">
@@ -185,16 +157,9 @@ const MotorisationDomotiquePage = () => {
 
       <ProcessSection />
       <QuoteFormSection />
-      <RepairShowcaseSection
-        image={motorizationTechnicianImg}
-        title="Expertise en Domotique & Motorisation"
-        description="Motoriser un volet roulant existant demande une expertise particulière pour choisir le moteur adapté au poids du tablier et au diamètre de l'axe. Nos techniciens sont experts des solutions Somfy (RTS, io-homecontrol) et Bubendorff. Nous assurons une installation propre, sans dégradation, et configurons vos télécommandes ou votre application smartphone pour une utilisation immédiate et simplifiée."
-        highlights={[
-          "Diagnostic de compatibilité de vos volets actuels",
-          "Installation de moteurs silencieux et performants",
-          "Configuration domotique et appairage smartphone",
-          "Formation à l'utilisation de vos nouveaux équipements"
-        ]}
+      <RepairShowcaseSection image={motorizationTechnicianImg} title="Expertise en Domotique & Motorisation"
+        description="Motoriser un volet roulant existant demande une expertise particulière pour choisir le moteur adapté au poids du tablier et au diamètre de l'axe."
+        highlights={["Diagnostic de compatibilité de vos volets actuels", "Installation de moteurs silencieux et performants", "Configuration domotique et appairage smartphone", "Formation à l'utilisation de vos nouveaux équipements"]}
       />
       <FAQSection />
       <TestimonialsSection />

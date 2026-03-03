@@ -100,7 +100,7 @@ const QuoteFormSection = () => {
   return (
     <section id="devis" className="py-20 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
       <div className="container mx-auto px-4 relative">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, ease: "easeOut" }} className="text-center max-w-2xl mx-auto mb-10">
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} className="text-center max-w-2xl mx-auto mb-10">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-semibold border border-accent/20 mb-4">
             ⚡ Réponse en moins de 24h
           </span>
@@ -110,7 +110,7 @@ const QuoteFormSection = () => {
           <p className="text-muted-foreground text-lg">Choisissez votre type de demande et répondez à quelques questions.</p>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }} className="max-w-3xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }} className="max-w-3xl mx-auto">
           {/* Top accent bar */}
           <div className="h-1.5 rounded-t-2xl" style={{ background: "linear-gradient(to right, hsl(var(--service-blue)), hsl(var(--accent)), hsl(var(--service-orange)))" }} />
 
