@@ -88,13 +88,18 @@ const DepannageExpressPage = () => {
             <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
               Volet bloqué ? Moteur en panne ? Vitre cassée ? Notre service de dépannage express intervient dans les plus brefs délais pour rétablir la sécurité et le confort de votre habitat. Disponible 7j/7, diagnostic gratuit, pièces en stock.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 mb-8">
               <Button size="lg" variant="accent" asChild className="gap-2 shadow-lg shadow-accent/25 rounded-full">
                 <a href="tel:0603205967"><Phone className="h-5 w-5" /> Appeler Maintenant</a>
               </Button>
               <Button size="lg" variant="accent-outline" asChild className="gap-2 rounded-full">
                 <Link to="/#devis">Demander un Devis <ArrowRight className="h-5 w-5" /></Link>
               </Button>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Badge variant="serviceRose"><AlertTriangle className="h-4 w-4" /> Urgence 7j/7</Badge>
+              <Badge variant="serviceOrange"><Clock className="h-4 w-4" /> Intervention le jour même</Badge>
+              <Badge variant="serviceEmerald"><Shield className="h-4 w-4" /> Diagnostic offert</Badge>
             </div>
           </motion.div>
         </div>

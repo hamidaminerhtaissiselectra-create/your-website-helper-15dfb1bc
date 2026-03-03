@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Wrench, ArrowRight, Phone, ChevronRight, AlertTriangle, CheckCircle2 } from "lucide-react";
+import { Wrench, ArrowRight, Phone, ChevronRight, AlertTriangle, CheckCircle2, Shield, Clock, Award } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -105,13 +105,18 @@ const ReparationVoletsPage = () => {
             <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
               Volet bloqué, moteur en panne, sangle cassée ? Nos techniciens experts interviennent rapidement pour diagnostiquer et réparer votre volet roulant. Diagnostic gratuit, pièces en stock, garantie 3 ans.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 mb-8">
               <Button size="lg" variant="accent" asChild className="gap-2 shadow-lg shadow-accent/25 rounded-full">
                 <Link to="/#devis">Devis Gratuit <ArrowRight className="h-5 w-5" /></Link>
               </Button>
               <Button size="lg" variant="accent-outline" asChild className="gap-2 rounded-full">
                 <a href="tel:0603205967"><Phone className="h-5 w-5" /> 06 03 20 59 67</a>
               </Button>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Badge variant="serviceBlue"><Shield className="h-4 w-4" /> Garantie 3 ans</Badge>
+              <Badge variant="serviceOrange"><Clock className="h-4 w-4" /> Intervention sous 48h</Badge>
+              <Badge variant="serviceEmerald"><Award className="h-4 w-4" /> Artisan certifié RGE</Badge>
             </div>
           </motion.div>
         </div>

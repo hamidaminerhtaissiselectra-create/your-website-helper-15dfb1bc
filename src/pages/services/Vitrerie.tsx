@@ -102,7 +102,7 @@ const VitreriePage = () => {
             <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
               Bris de glace, vitrage cassé ou remplacement programmé ? Nos vitriers professionnels interviennent en urgence 7 jours sur 7 pour sécuriser votre habitation. Simple, double ou triple vitrage — nous traitons toutes les situations avec réactivité et expertise.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 mb-8">
               <Button size="lg" variant="accent" asChild className="gap-2 shadow-lg shadow-accent/25 rounded-full">
                 <a href="tel:0603205967"><Phone className="h-5 w-5" /> Urgence : 06 03 20 59 67</a>
               </Button>
@@ -110,37 +110,42 @@ const VitreriePage = () => {
                 <Link to="/#devis">Devis Gratuit <ArrowRight className="h-5 w-5" /></Link>
               </Button>
             </div>
+            <div className="flex flex-wrap gap-3">
+              <Badge variant="serviceRose"><AlertTriangle className="h-4 w-4" /> Urgence 7j/7</Badge>
+              <Badge variant="serviceBlue"><ShieldCheck className="h-4 w-4" /> Vitrage certifié</Badge>
+              <Badge variant="serviceEmerald"><CheckCircle2 className="h-4 w-4" /> Prise en charge assurance</Badge>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Urgence */}
       <section className="py-16">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="font-display text-3xl font-bold text-foreground mb-6">Service d'Urgence Vitrerie — Intervention Rapide</h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              Un vitrage cassé constitue une <strong className="text-foreground">urgence de sécurité</strong>. Que ce soit suite à un cambriolage, un accident domestique ou des intempéries, chaque minute compte pour sécuriser votre habitation. Notre service d'urgence vitrerie est disponible <strong className="text-foreground">7 jours sur 7</strong>.
+        <div className="container mx-auto px-4 max-w-5xl">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-2xl mx-auto mb-12">
+            <Badge variant="serviceRose" className="gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-4">
+              <AlertTriangle className="h-3.5 w-3.5" /> Urgence 7j/7
+            </Badge>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">Service d'Urgence Vitrerie — Intervention Rapide</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Un vitrage cassé est une urgence de sécurité. Nos vitriers interviennent 7j/7 pour une mise en sécurité immédiate et un remplacement définitif dans les meilleurs délais.
             </p>
-            <p className="text-muted-foreground leading-relaxed mb-8">
-              Nos vitriers arrivent équipés pour réaliser une <strong className="text-foreground">mise en sécurité immédiate</strong> (pose de panneau provisoire) puis procèdent au remplacement définitif du vitrage dans les plus brefs délais.
-            </p>
-            <div className="bg-card rounded-xl p-6 border border-service-rose/20 card-shadow">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-2xl bg-service-rose/10 flex items-center justify-center shadow-lg border border-white/10">
-                   <AlertTriangle className="h-5 w-5 text-service-rose" />
-                </div>
-                <h3 className="font-display font-bold text-foreground">Nous intervenons en urgence pour :</h3>
-              </div>
-              <div className="grid sm:grid-cols-2 gap-2">
-                {urgences.map((u) => (
-                  <div key={u} className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <CheckCircle2 className="h-4 w-4 text-accent shrink-0" /> {u}
-                  </div>
-                ))}
-              </div>
-            </div>
           </motion.div>
+          <div className="bg-card rounded-xl p-6 border border-service-rose/20 card-shadow max-w-3xl mx-auto">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-2xl bg-service-rose/10 flex items-center justify-center shadow-lg border border-white/10">
+                 <AlertTriangle className="h-5 w-5 text-service-rose" />
+              </div>
+              <h3 className="font-display font-bold text-foreground">Nous intervenons en urgence pour :</h3>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-2">
+              {urgences.map((u) => (
+                <div key={u} className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-accent shrink-0" /> {u}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
