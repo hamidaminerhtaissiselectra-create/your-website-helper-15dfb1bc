@@ -139,21 +139,36 @@ const BlogPage = () => {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* CTA + Maillage interne */}
       <section className="py-16 bg-section-gradient">
         <div className="container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <Badge variant="accent" className="gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-4">Nos Services</Badge>
             <h2 className="font-display text-3xl font-bold text-foreground mb-4">Besoin d'une intervention ?</h2>
             <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
               Nos experts sont disponibles pour vous conseiller et intervenir rapidement. Contactez-nous dès maintenant.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" variant="accent" asChild className="gap-2 rounded-full">
+            <div className="flex flex-wrap justify-center gap-4 mb-10">
+              <Button size="lg" variant="accent" asChild className="gap-2 rounded-full shadow-lg shadow-accent/20">
                 <Link to="/#devis">Demander un Devis <ArrowRight className="h-5 w-5" /></Link>
               </Button>
               <Button size="lg" variant="accent-outline" asChild className="gap-2 rounded-full">
                 <a href="tel:0603205967">06 03 20 59 67</a>
               </Button>
+            </div>
+            {/* Service links - Maillage interne */}
+            <div className="flex flex-wrap justify-center gap-3 max-w-2xl mx-auto">
+              {[
+                { label: "Réparation de volets", href: "/services/reparation-volets-roulants" },
+                { label: "Dépannage express", href: "/services/depannage-express" },
+                { label: "Installation & Remplacement", href: "/services/installation-remplacement-volets" },
+                { label: "Motorisation & Domotique", href: "/services/motorisation-domotique" },
+                { label: "Vitrerie & Vitrage", href: "/services/vitrerie-remplacement-vitrage" },
+              ].map((s) => (
+                <Link key={s.href} to={s.href} className="px-4 py-2 rounded-full border border-border bg-card text-sm font-semibold text-accent hover:border-accent hover:shadow-md transition-all duration-300">
+                  {s.label}
+                </Link>
+              ))}
             </div>
           </motion.div>
         </div>

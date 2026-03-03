@@ -90,7 +90,7 @@ const MotorisationDomotiquePage = () => {
             <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
               Transformez vos volets manuels en volets motorisés et connectés. Contrôle à distance, programmation horaire, scénarios automatisés — découvrez le confort de la maison intelligente avec nos solutions compatibles Somfy, Google Home et Alexa.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 mb-8">
               <Button size="lg" variant="accent" asChild className="gap-2 shadow-lg shadow-accent/25 rounded-full">
                 <Link to="/#devis">Devis Gratuit <ArrowRight className="h-5 w-5" /></Link>
               </Button>
@@ -98,37 +98,42 @@ const MotorisationDomotiquePage = () => {
                 <a href="tel:0603205967"><Phone className="h-5 w-5" /> 06 03 20 59 67</a>
               </Button>
             </div>
+            <div className="flex flex-wrap gap-3">
+              <Badge variant="serviceViolet"><Cpu className="h-4 w-4" /> Domotique compatible</Badge>
+              <Badge variant="serviceBlue"><Smartphone className="h-4 w-4" /> Contrôle smartphone</Badge>
+              <Badge variant="serviceEmerald"><Shield className="h-4 w-4" /> Garantie 5 ans moteur</Badge>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Pourquoi motoriser */}
       <section className="py-16">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="font-display text-3xl font-bold text-foreground mb-6">Pourquoi Motoriser Vos Volets Roulants ?</h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              La motorisation de volets roulants est l'un des investissements les plus rentables pour améliorer le <strong className="text-foreground">confort de votre habitat</strong>. Fini les efforts pour monter et descendre vos volets manuellement — un simple appui sur un bouton, une commande vocale ou une programmation automatique suffit.
+        <div className="container mx-auto px-4 max-w-5xl">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-2xl mx-auto mb-12">
+            <Badge variant="serviceViolet" className="gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-4">
+              <Cpu className="h-3.5 w-3.5" /> Confort & Innovation
+            </Badge>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">Pourquoi Motoriser Vos Volets Roulants ?</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Plus de confort, plus de sécurité, plus d'économies d'énergie. La motorisation transforme votre quotidien avec un simple appui sur un bouton ou une commande vocale.
             </p>
-            <p className="text-muted-foreground leading-relaxed mb-8">
-              Au-delà du confort, la motorisation apporte des avantages concrets en matière de <strong className="text-foreground">sécurité</strong> (simulation de présence pendant les vacances), d'<strong className="text-foreground">économie d'énergie</strong> (fermeture automatique au coucher du soleil) et d'<strong className="text-foreground">accessibilité</strong> pour les personnes à mobilité réduite.
-            </p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {[
-                { icon: Smartphone, label: "Contrôle smartphone", color: "bg-service-violet/10 text-service-violet", border: "border-service-violet/20" },
-                { icon: Clock, label: "Programmation horaire", color: "bg-service-blue/10 text-service-blue", border: "border-service-blue/20" },
-                { icon: Shield, label: "Simulation présence", color: "bg-service-emerald/10 text-service-emerald", border: "border-service-emerald/20" },
-                { icon: Zap, label: "Économies d'énergie", color: "bg-service-orange/10 text-service-orange", border: "border-service-orange/20" },
-              ].map((item) => (
-                <motion.div key={item.label} whileHover={{ scale: 1.03 }} className={`bg-card rounded-xl p-4 border ${item.border} card-shadow text-center transition-all`}>
-                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-3 ${item.color} shadow-lg border border-white/10`}>
-                    <item.icon className="h-5 w-5" />
-                  </div>
-                  <div className="font-display font-bold text-foreground text-sm">{item.label}</div>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: Smartphone, label: "Contrôle smartphone", color: "bg-service-violet/10 text-service-violet", border: "border-service-violet/20" },
+              { icon: Clock, label: "Programmation horaire", color: "bg-service-blue/10 text-service-blue", border: "border-service-blue/20" },
+              { icon: Shield, label: "Simulation présence", color: "bg-service-emerald/10 text-service-emerald", border: "border-service-emerald/20" },
+              { icon: Zap, label: "Économies d'énergie", color: "bg-service-orange/10 text-service-orange", border: "border-service-orange/20" },
+            ].map((item) => (
+              <motion.div key={item.label} whileHover={{ scale: 1.03 }} className={`bg-card rounded-xl p-4 border ${item.border} card-shadow text-center transition-all`}>
+                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-3 ${item.color} shadow-lg border border-white/10`}>
+                  <item.icon className="h-5 w-5" />
+                </div>
+                <div className="font-display font-bold text-foreground text-sm">{item.label}</div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

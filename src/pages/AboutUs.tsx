@@ -29,12 +29,7 @@ const certifications = [
   { name: "Assurance RC", desc: "Responsabilité civile complète", color: "bg-service-violet", iconShadow: "shadow-[0_4px_14px_hsl(260,65%,55%,0.35)]" },
 ];
 
-const stats = [
-  { number: "10+", label: "Années d'expérience", icon: Trophy },
-  { number: "5000+", label: "Interventions réalisées", icon: Zap },
-  { number: "500+", label: "Clients satisfaits", icon: Users },
-  { number: "4.9/5", label: "Note moyenne", icon: Award },
-];
+
 
 const faqs = [
   { q: "Combien de temps dure une intervention de réparation ?", a: "La plupart de nos interventions durent entre 1 et 3 heures selon la complexité de la panne. Nous vous donnons une estimation précise lors de notre diagnostic gratuit." },
@@ -165,14 +160,20 @@ const AboutUsPage = () => {
       <section className="py-16 bg-section-gradient">
         <div className="container mx-auto px-4">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="font-display text-3xl font-bold text-foreground mb-4">Nos Chiffres Clés</h2>
+            <Badge variant="accent" className="gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-4">Nos Résultats</Badge>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">Nos Chiffres Clés</h2>
             <p className="text-muted-foreground">Une décennie d'engagement envers l'excellence et la satisfaction client</p>
           </motion.div>
           <div className="grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {stats.map((stat, i) => (
-              <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-card rounded-xl p-8 border border-border card-shadow text-center">
-                <div className="w-12 h-12 rounded-2xl bg-service-blue/10 flex items-center justify-center mx-auto mb-4">
-                  <stat.icon className="h-6 w-6 text-service-blue" />
+            {[
+              { number: "10+", label: "Années d'expérience", icon: Trophy, color: "bg-service-blue", iconShadow: "shadow-[0_4px_14px_hsl(213,72%,50%,0.35)]" },
+              { number: "5000+", label: "Interventions réalisées", icon: Zap, color: "bg-service-orange", iconShadow: "shadow-[0_4px_14px_hsl(25,90%,55%,0.35)]" },
+              { number: "500+", label: "Clients satisfaits", icon: Users, color: "bg-service-emerald", iconShadow: "shadow-[0_4px_14px_hsl(160,70%,40%,0.35)]" },
+              { number: "4.9/5", label: "Note moyenne", icon: Award, color: "bg-service-violet", iconShadow: "shadow-[0_4px_14px_hsl(260,65%,55%,0.35)]" },
+            ].map((stat, i) => (
+              <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-card rounded-xl p-8 border border-border card-shadow text-center hover:card-shadow-hover transition-all">
+                <div className={`w-14 h-14 rounded-2xl ${stat.color} ${stat.iconShadow} flex items-center justify-center mx-auto mb-4 border border-white/20`}>
+                  <stat.icon className="h-7 w-7 text-white" />
                 </div>
                 <div className="font-display text-4xl font-extrabold text-foreground mb-2">{stat.number}</div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>

@@ -1,17 +1,25 @@
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+
+const features = [
+  "Intervention rapide et efficace sous 48h",
+  "Techniciens certifiés RGE et Qualibat",
+  "Travail soigné avec pièces d'origine",
+  "Garantie 3 ans pièces et main d'œuvre",
+];
+
+const blogLinks = [
+  { label: "Guide d'entretien des volets roulants", slug: "entretien-volets-roulants" },
+  { label: "Réparation ou remplacement : que choisir ?", slug: "reparation-vs-remplacement" },
+  { label: "Pannes fréquentes et solutions", slug: "pannes-frequentes-volets-roulants" },
+];
 
 const ImageTextSection = () => {
-  const features = [
-    "Intervention rapide et efficace",
-    "Techniciens qualifiés et expérimentés",
-    "Travail soigné et professionnel",
-    "Garantie sur tous les travaux",
-  ];
-
   return (
     <section className="py-12 sm:py-16 md:py-20 relative overflow-hidden">
-      {/* Subtle background gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-muted/10 to-transparent" />
       
       <div className="container mx-auto px-4 relative">
@@ -27,23 +35,22 @@ const ImageTextSection = () => {
             <div className="relative rounded-2xl overflow-hidden card-shadow">
               <img
                 src="/repair-service.jpg"
-                alt="Technicien réparant un volet roulant"
+                alt="Technicien certifié RGE réparant un volet roulant à Paris"
                 className="w-full h-auto object-cover"
               />
-              {/* Overlay gradient for depth */}
               <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-transparent" />
             </div>
             
-            {/* Floating badge */}
+            {/* Floating badge - coin droit */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-              className="absolute -bottom-4 -right-4 bg-service-orange text-white rounded-xl p-4 card-shadow-hover"
+              className="absolute -bottom-4 -right-4 bg-accent text-white rounded-xl p-4 card-shadow-hover border border-white/20"
             >
-              <div className="text-2xl font-bold">24h</div>
-              <div className="text-xs font-medium">Intervention</div>
+              <div className="text-2xl font-bold">48h</div>
+              <div className="text-xs font-medium">Intervention max</div>
             </motion.div>
           </motion.div>
 
@@ -56,14 +63,14 @@ const ImageTextSection = () => {
           >
             <div className="space-y-6">
               <div>
-                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-service-orange/10 text-service-orange text-sm font-semibold border border-service-orange/20 mb-4">
+                <Badge variant="serviceOrange" className="gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-4">
                   Notre Expertise
-                </span>
+                </Badge>
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mt-4 mb-3">
                   Réparation et Maintenance de Volets Roulants
                 </h2>
                 <p className="text-muted-foreground text-base leading-relaxed">
-                  Depuis plus de 15 ans, nous intervenons à Paris et en Île-de-France pour réparer, installer et entretenir vos volets roulants. Notre équipe de techniciens qualifiés garantit une intervention rapide et un travail de qualité.
+                  Depuis plus de 10 ans, nous intervenons à Paris et en Île-de-France pour réparer, installer et entretenir vos volets roulants. Notre équipe de techniciens certifiés RGE garantit une intervention rapide et un travail de qualité irréprochable.
                 </p>
               </div>
 
@@ -78,10 +85,26 @@ const ImageTextSection = () => {
                     transition={{ duration: 0.5, delay: 0.2 + index * 0.1, ease: "easeOut" }}
                     className="flex items-center gap-3"
                   >
-                    <CheckCircle2 className="h-5 w-5 text-service-orange flex-shrink-0" />
+                    <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0" />
                     <span className="text-foreground font-medium">{feature}</span>
                   </motion.div>
                 ))}
+              </div>
+
+              {/* Blog internal links - Maillage interne */}
+              <div className="pt-4 border-t border-border">
+                <p className="text-sm font-semibold text-foreground mb-3">📖 Articles utiles :</p>
+                <div className="flex flex-wrap gap-2">
+                  {blogLinks.map((link) => (
+                    <Link
+                      key={link.slug}
+                      to={`/blog/${link.slug}`}
+                      className="text-xs text-accent hover:text-accent/80 font-medium underline-offset-4 hover:underline transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
 
               {/* CTA Button */}
@@ -90,12 +113,13 @@ const ImageTextSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-                className="pt-4"
+                className="pt-2"
               >
-                <button className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-service-orange text-white font-semibold hover:bg-service-orange/90 transition-colors duration-300 shadow-lg hover:shadow-xl">
-                  Demander un devis gratuit
-                  <span className="text-lg">→</span>
-                </button>
+                <Button size="lg" variant="accent" asChild className="gap-2 rounded-full shadow-lg shadow-accent/20">
+                  <Link to="/#devis">
+                    Demander un devis gratuit <ArrowRight className="h-5 w-5" />
+                  </Link>
+                </Button>
               </motion.div>
             </div>
           </motion.div>

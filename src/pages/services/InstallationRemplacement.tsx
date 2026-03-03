@@ -94,7 +94,7 @@ const InstallationRemplacementPage = () => {
             <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
               Transformez votre habitat avec des volets roulants neufs fabriqués sur-mesure. Aluminium ou PVC — nous vous accompagnons du choix du matériau à la pose professionnelle, avec garantie 3 ans pièces et main d'œuvre.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 mb-8">
               <Button size="lg" variant="accent" asChild className="gap-2 shadow-lg shadow-accent/25 rounded-full">
                 <Link to="/#devis">Devis Gratuit Personnalisé <ArrowRight className="h-5 w-5" /></Link>
               </Button>
@@ -102,20 +102,25 @@ const InstallationRemplacementPage = () => {
                 <a href="tel:0603205967"><Phone className="h-5 w-5" /> 06 03 20 59 67</a>
               </Button>
             </div>
+            <div className="flex flex-wrap gap-3">
+              <Badge variant="serviceBlue"><Shield className="h-4 w-4" /> Garantie 3 ans</Badge>
+              <Badge variant="serviceEmerald"><CheckCircle2 className="h-4 w-4" /> Fabrication sur-mesure</Badge>
+              <Badge variant="serviceOrange"><Sun className="h-4 w-4" /> Options solaires</Badge>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Pourquoi remplacer */}
       <section className="py-16">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="font-display text-3xl font-bold text-foreground mb-6">Pourquoi Installer ou Remplacer Vos Volets Roulants ?</h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              Les volets roulants jouent un rôle essentiel dans le <strong className="text-foreground">confort, la sécurité et la performance énergétique</strong> de votre habitation. Qu'il s'agisse d'une construction neuve ou d'une rénovation, l'installation de volets roulants modernes est un investissement qui se rentabilise rapidement grâce aux économies d'énergie réalisées.
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-8">
-              Si vos volets actuels sont vétustes, difficiles à manœuvrer ou mal isolés, leur remplacement vous permettra de bénéficier des dernières technologies en matière d'isolation, de motorisation et de sécurité. De plus, vous pourrez profiter d'aides financières comme <strong className="text-foreground">MaPrimeRénov'</strong> et le <strong className="text-foreground">crédit d'impôt</strong> grâce à notre certification RGE.
+        <div className="container mx-auto px-4 max-w-5xl">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-2xl mx-auto mb-12">
+            <Badge variant="serviceCyan" className="gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-4">
+              <RefreshCcw className="h-3.5 w-3.5" /> Avantages
+            </Badge>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">Pourquoi Installer ou Remplacer Vos Volets Roulants ?</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Un investissement rentable pour le confort, la sécurité et la performance énergétique de votre habitat. Éligible <strong className="text-foreground">MaPrimeRénov'</strong> grâce à notre certification RGE.
             </p>
           </motion.div>
           <div className="grid sm:grid-cols-2 gap-6">
