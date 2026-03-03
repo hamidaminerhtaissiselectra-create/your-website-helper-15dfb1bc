@@ -14,55 +14,20 @@ import QuoteFormSection from "@/components/QuoteFormSection";
 import RepairShowcaseSection from "@/components/RepairShowcaseSection";
 import ServiceRegionsSection from "@/components/ServiceRegionsSection";
 import FAQSection from "@/components/FAQSection";
-
 import glazierTechnicianImg from "@/assets/glazier-technician-section.jpg";
+import { fadeUp, staggerItem, hoverLift, heroEntry } from "@/lib/animations";
 
 const typesVitrage = [
-  { 
-    title: "Double vitrage thermique", 
-    desc: "La solution standard pour une isolation thermique et phonique efficace. Réduit les pertes de chaleur de 40% par rapport au simple vitrage.", 
-    features: ["Isolation thermique 40%+", "Isolation phonique", "Standard construction neuve"], 
-    color: "border-service-emerald/20", 
-    badgeColor: "bg-service-emerald/10 text-service-emerald border-service-emerald/20",
-    image: "/images/vitrage/double-vitrage.webp",
-    data: ["U-Value : 1.1 W/m²K", "Épaisseur : 4/16/4", "Gaz Argon inclus"]
-  },
-  { 
-    title: "Vitrage anti-effraction", 
-    desc: "Vitrage feuilleté de sécurité avec film PVB. Résiste aux tentatives d'intrusion et protège contre les blessures en cas de bris.", 
-    features: ["Retarde les intrusions", "Sécurité anti-blessure", "Norme EN 356"], 
-    color: "border-service-rose/20", 
-    badgeColor: "bg-service-rose/10 text-service-rose border-service-rose/20",
-    image: "/images/vitrage/feuillete.jpg",
-    data: ["Classe : P2A à P5A", "Film PVB renforcé", "Anti-éclats"]
-  },
-  { 
-    title: "Vitrage dépoli & Intimité", 
-    desc: "Vitrage traité à l'acide pour un aspect translucide. Laisse passer la lumière tout en préservant totalement votre intimité.", 
-    features: ["Intimité totale", "Lumière naturelle", "Design moderne"], 
-    color: "border-service-violet/20", 
-    badgeColor: "bg-service-violet/10 text-service-violet border-service-violet/20",
-    image: "/images/vitrage/depoli.jpg",
-    data: ["Finition : Dépoli acide", "Usage : SDB / Bureau", "Facile d'entretien"]
-  },
-  { 
-    title: "Vitrage acoustique", 
-    desc: "Composition asymétrique spécifique pour réduire drastiquement les nuisances sonores. Idéal pour les zones urbaines bruyantes.", 
-    features: ["Réduction -35 dB", "Zones urbaines", "Composition asymétrique"], 
-    color: "border-service-cyan/20", 
-    badgeColor: "bg-service-cyan/10 text-service-cyan border-service-cyan/20",
-    image: "/images/vitrage/phonique.jpg",
-    data: ["Atténuation : 35-40 dB", "Verre asymétrique", "Confort phonique"]
-  },
+  { title: "Double vitrage thermique", desc: "La solution standard pour une isolation thermique et phonique efficace. Réduit les pertes de chaleur de 40%.", features: ["Isolation thermique 40%+", "Isolation phonique", "Standard construction neuve"], color: "border-service-emerald/20", badgeColor: "bg-service-emerald/10 text-service-emerald border-service-emerald/20", image: "/images/vitrage/double-vitrage.webp", data: ["U-Value : 1.1 W/m²K", "Épaisseur : 4/16/4", "Gaz Argon inclus"] },
+  { title: "Vitrage anti-effraction", desc: "Vitrage feuilleté de sécurité avec film PVB. Résiste aux tentatives d'intrusion et protège contre les blessures.", features: ["Retarde les intrusions", "Sécurité anti-blessure", "Norme EN 356"], color: "border-service-rose/20", badgeColor: "bg-service-rose/10 text-service-rose border-service-rose/20", image: "/images/vitrage/feuillete.jpg", data: ["Classe : P2A à P5A", "Film PVB renforcé", "Anti-éclats"] },
+  { title: "Vitrage dépoli & Intimité", desc: "Vitrage traité à l'acide pour un aspect translucide. Laisse passer la lumière tout en préservant votre intimité.", features: ["Intimité totale", "Lumière naturelle", "Design moderne"], color: "border-service-violet/20", badgeColor: "bg-service-violet/10 text-service-violet border-service-violet/20", image: "/images/vitrage/depoli.jpg", data: ["Finition : Dépoli acide", "Usage : SDB / Bureau", "Facile d'entretien"] },
+  { title: "Vitrage acoustique", desc: "Composition asymétrique spécifique pour réduire drastiquement les nuisances sonores. Idéal pour les zones urbaines.", features: ["Réduction -35 dB", "Zones urbaines", "Composition asymétrique"], color: "border-service-cyan/20", badgeColor: "bg-service-cyan/10 text-service-cyan border-service-cyan/20", image: "/images/vitrage/phonique.jpg", data: ["Atténuation : 35-40 dB", "Verre asymétrique", "Confort phonique"] },
 ];
 
 const urgences = [
-  "Bris de glace suite à un cambriolage",
-  "Vitre cassée par intempéries (grêle, tempête)",
-  "Vitrage fissuré posant un risque de sécurité",
-  "Porte vitrée brisée",
-  "Baie vitrée endommagée",
-  "Vitrine de commerce cassée",
+  "Bris de glace suite à un cambriolage", "Vitre cassée par intempéries (grêle, tempête)",
+  "Vitrage fissuré posant un risque de sécurité", "Porte vitrée brisée",
+  "Baie vitrée endommagée", "Vitrine de commerce cassée",
 ];
 
 const VitreriePage = () => {
@@ -72,7 +37,7 @@ const VitreriePage = () => {
 
   useSEO({
     title: "Vitrerie & Remplacement Vitrage | Urgence Bris de Glace 7j/7 | Répar'Action Volets",
-    description: "Remplacement de vitrage en urgence 7j/7. Double vitrage, vitrage anti-effraction, acoustique. Mise en sécurité immédiate après bris de glace. Devis gratuit.",
+    description: "Remplacement de vitrage en urgence 7j/7. Double vitrage, vitrage anti-effraction, acoustique. Devis gratuit.",
     keywords: "vitrerie, remplacement vitrage, bris de glace, double vitrage, vitrage anti-effraction, urgence vitrerie, Paris",
     canonicalUrl: "https://reparaction-volets.fr/services/vitrerie-remplacement-vitrage",
   });
@@ -80,7 +45,6 @@ const VitreriePage = () => {
   return (
     <main className="relative">
       <Navbar />
-      
       <section ref={heroRef} className="relative pt-24 pb-16 min-h-[60vh] flex items-center overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: bgY }}>
           <img src={imgVitrerie} alt="Vitrerie et remplacement de vitrage" className="w-full h-[120%] object-cover" />
@@ -92,7 +56,7 @@ const VitreriePage = () => {
             <ChevronRight className="h-4 w-4" />
             <span>Vitrerie & Remplacement de Vitrage</span>
           </div>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
+          <motion.div {...heroEntry(0)} className="max-w-3xl">
             <Badge variant="serviceBlue" className="gap-2 px-3 py-1.5 rounded-full text-white text-sm font-semibold mb-6 backdrop-blur-sm">
               <GlassWater className="h-3.5 w-3.5" /> Urgence 7j/7
             </Badge>
@@ -100,7 +64,7 @@ const VitreriePage = () => {
               Vitrerie & Remplacement de Vitrage — Paris & Île-de-France
             </h1>
             <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
-              Bris de glace, vitrage cassé ou remplacement programmé ? Nos vitriers professionnels interviennent en urgence 7 jours sur 7 pour sécuriser votre habitation. Simple, double ou triple vitrage — nous traitons toutes les situations avec réactivité et expertise.
+              Bris de glace, vitrage cassé ou remplacement programmé ? Nos vitriers professionnels interviennent en urgence 7 jours sur 7.
             </p>
             <div className="flex flex-wrap gap-4 mb-8">
               <Button size="lg" variant="accent" asChild className="gap-2 shadow-lg shadow-accent/25 rounded-full">
@@ -119,22 +83,21 @@ const VitreriePage = () => {
         </div>
       </section>
 
-      {/* Urgence */}
       <section className="py-16">
         <div className="container mx-auto px-4 max-w-5xl">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-2xl mx-auto mb-12">
+          <motion.div {...fadeUp} className="text-center max-w-2xl mx-auto mb-12">
             <Badge variant="serviceRose" className="gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-4">
               <AlertTriangle className="h-3.5 w-3.5" /> Urgence 7j/7
             </Badge>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">Service d'Urgence Vitrerie — Intervention Rapide</h2>
             <p className="text-muted-foreground leading-relaxed">
-              Un vitrage cassé est une urgence de sécurité. Nos vitriers interviennent 7j/7 pour une mise en sécurité immédiate et un remplacement définitif dans les meilleurs délais.
+              Un vitrage cassé est une urgence de sécurité. Nos vitriers interviennent 7j/7 pour une mise en sécurité immédiate.
             </p>
           </motion.div>
-          <div className="bg-card rounded-xl p-6 border border-service-rose/20 card-shadow max-w-3xl mx-auto">
+          <motion.div {...fadeUp} className="bg-card rounded-xl p-6 border border-service-rose/20 card-shadow max-w-3xl mx-auto">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-2xl bg-service-rose/10 flex items-center justify-center shadow-lg border border-white/10">
-                 <AlertTriangle className="h-5 w-5 text-service-rose" />
+                <AlertTriangle className="h-5 w-5 text-service-rose" />
               </div>
               <h3 className="font-display font-bold text-foreground">Nous intervenons en urgence pour :</h3>
             </div>
@@ -145,26 +108,20 @@ const VitreriePage = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Types de vitrage */}
       <section className="py-16 bg-section-gradient">
         <div className="container mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-2xl mx-auto mb-12">
+          <motion.div {...fadeUp} className="text-center max-w-2xl mx-auto mb-12">
             <Badge variant="serviceBlue" className="gap-2 px-3 py-1 rounded-full text-sm font-semibold border border-service-blue/20 mb-4">Catalogue</Badge>
             <h2 className="font-display text-3xl font-bold text-foreground mb-4">Tous les Types de Vitrage Disponibles</h2>
-            <p className="text-muted-foreground">Nous posons et remplaçons tous types de vitrage, du simple au triple, en passant par les vitrages spéciaux.</p>
+            <p className="text-muted-foreground">Nous posons et remplaçons tous types de vitrage.</p>
           </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {typesVitrage.map((v, i) => (
-              <motion.div
-                key={v.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+              <motion.div key={v.title} {...staggerItem(i)} {...hoverLift}
                 className={`group bg-card rounded-2xl border ${v.color} overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-500 flex flex-col`}
               >
                 <div className="relative h-56 overflow-hidden">
@@ -202,16 +159,9 @@ const VitreriePage = () => {
 
       <ProcessSection />
       <QuoteFormSection />
-      <RepairShowcaseSection
-        image={glazierTechnicianImg}
-        title="Expertise en Vitrerie & Sécurité"
-        description="Le remplacement d'un vitrage demande une précision millimétrée et une connaissance approfondie des matériaux. Nos vitriers experts maîtrisent la pose de tous types de verres : du double vitrage thermique haute performance au verre feuilleté de sécurité. Nous intervenons avec un équipement professionnel pour garantir une installation sûre, étanche et durable, tout en optimisant l'isolation de votre habitat."
-        highlights={[
-          "Remplacement de tous types de vitrages (simple, double, triple)",
-          "Mise en sécurité immédiate après bris de glace",
-          "Vitrages certifiés conformés aux normes d'isolation et de sécurité",
-          "Accompagnement pour la prise en charge par votre assurance"
-        ]}
+      <RepairShowcaseSection image={glazierTechnicianImg} title="Expertise en Vitrerie & Sécurité"
+        description="Le remplacement d'un vitrage demande une précision millimétrée et une connaissance approfondie des matériaux."
+        highlights={["Remplacement de tous types de vitrages (simple, double, triple)", "Mise en sécurité immédiate après bris de glace", "Vitrages certifiés conformés aux normes", "Accompagnement pour la prise en charge assurance"]}
       />
       <FAQSection />
       <TestimonialsSection />
